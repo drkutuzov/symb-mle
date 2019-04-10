@@ -30,3 +30,10 @@ def sum_two_normal():
     pdf1 = p*sympy.exp(-(x - mu1)**2/(2*s1**2))/(sympy.sqrt(2*sympy.pi)*s1)
     pdf2 = (1-p)*sympy.exp(-(x - mu2)**2/(2*s2**2))/(sympy.sqrt(2*sympy.pi)*s2)
     return SymbPDF(args=[x], pars=[p, mu1, s1, mu2, s2], pdf=pdf1 + pdf2)
+
+
+def sum_two_normal_same_var():
+    x, p, mu1, mu2, s = sympy.symbols('x p mu1 mu2 s', real=True)
+    pdf1 = p*sympy.exp(-(x - mu1)**2/(2*s**2))/(sympy.sqrt(2*sympy.pi)*s)
+    pdf2 = (1-p)*sympy.exp(-(x - mu2)**2/(2*s**2))/(sympy.sqrt(2*sympy.pi)*s)
+    return SymbPDF(args=[x], pars=[p, mu1, mu2, s], pdf=pdf1 + pdf2)
